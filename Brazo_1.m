@@ -8,22 +8,23 @@ prompt= 'Cuanto deseas rotar en grados con respecto la segunda extremidad del br
 theta2 = input(prompt);
 
 %Funcion para realizar la conversiones en radianes
-
-printAxis();
-p1=[0; 0; 0];
-l1=8;
-
 theta1_rad_fin = deg2rad(theta1);
+theta2_rad_fin = deg2rad(theta2);
+
 %-----------------------------------------------------------------------------------------------------
 % Rotacion y traslacion desde el origen 
 
-for theta1_rad=0:0.1:theta1_rad_fin
-    %clf
+for theta1_rad=0:0.01:theta1_rad_fin
+    clf
+    printAxis();
+    p1=[0; 0; 0];
+    l1=8;
+    l2=4;
     %Matriz de rotacion en Z
     TRz1= [cos(theta1_rad) -sin(theta1_rad)   0    0;
-         sin(theta1_rad)  cos(theta1_rad)     0    0; 
-              0             0            1    0;
-              0             0            0    1];
+           sin(theta1_rad)  cos(theta1_rad)     0    0; 
+                0             0            1    0;
+                0             0            0    1];
 
     %Matriz de traslacion en X
     Ttx1=[1   0    0   l1;
@@ -48,10 +49,9 @@ for theta1_rad=0:0.1:theta1_rad_fin
 
     line([p2(1) v2x(1)], [p2(2) v2x(2)],[p2(2) v2x(2)],'color',[1 0 0],'linewidth',5);
     line([p2(1) v2y(1)], [p2(2) v2y(2)],[p2(2) v2y(2)],'color',[0 1 0],'linewidth',5);
-    l2=4;
+    
     grid on 
-  
-%     theta2 = 0;
+     % theta2 = 0;
     theta2_rad = deg2rad(0);
     %Matriz de rotacion en Z
     TRz2= [cos(theta2_rad) -sin(theta2_rad)   0    0;
@@ -76,18 +76,15 @@ for theta1_rad=0:0.1:theta1_rad_fin
 
       line([p3(1) v3x(1)], [p3(2) v3x(2)],[p3(2) v3x(2)],'color',[1 0 0],'linewidth',5);
       line([p3(1) v3y(1)], [p3(2) v3y(2)],[p3(2) v3y(2)],'color',[0 1 0],'linewidth',5);
-      
-    pause(0.2)
+    pause(0.1)
 end
 %--------------------------------------------------------------------------------------
-% Rotacion y traslacion apartir de la primera rotacion y traslacion  
+% Rotacion y traslacion apartir de la primera rotacion y traslacion
 
-l2=4;
-% theta2 = -15;
-theta2_rad_fin = deg2rad(theta2);
-
-for theta2_rad=0:-0.1:theta2_rad_fin
-    %clf;
+for theta2_rad=0:-0.01:theta2_rad_fin
+    clf
+    l2=4;
+    printAxis();
     grid on 
     
     %Matriz de rotacion en Z
@@ -114,5 +111,5 @@ for theta2_rad=0:-0.1:theta2_rad_fin
 
       line([p3(1) v3x(1)], [p3(2) v3x(2)],[p3(2) v3x(2)],'color',[1 0 0],'linewidth',5);
       line([p3(1) v3y(1)], [p3(2) v3y(2)],[p3(2) v3y(2)],'color',[0 1 0],'linewidth',5);
-      pause(0.2)
+      pause(0.1)
 end
